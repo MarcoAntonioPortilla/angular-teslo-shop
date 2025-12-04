@@ -1,0 +1,50 @@
+<form
+  class="flex flex-col gap-2"
+  [formGroup]="registerForm"
+  (ngSubmit)="onRegister()">
+
+  <label class="input">
+    <input
+      type="search"
+      class="grow"
+      placeholder="email"
+      formControlName="email"/>
+
+  </label>
+  <label class="input">
+    <input
+      type="password"
+      class="grow"
+      placeholder="password"
+      formControlName="password"/>
+  </label>
+
+  <label class="input">
+    <input
+      type="text"
+      class="grow"
+      placeholder="Nombre Completo"
+      formControlName="fullName"/>
+  </label>
+
+  <button type="submit" class="btn btn-secondary">Registrar</button>
+
+  <p class="text-slate-700">
+    Regresar
+    <a class="text-secondary" routerLink="/auth/login">Aquí</a>
+  </p>
+
+</form>
+
+
+
+@if(hasError()){
+    <!--Mensaje de error del formulario-->
+    <app-message [typeMessage]="1" [message]="'Por favor, revise la información ingresada.'" />
+}
+
+
+@if(hasSuccess()){
+    <!--Mensaje de éxito del formulario-->
+    <app-message [typeMessage]="2" [message]="'Se ha registrado correctamente el nuevo usuario.'" />
+}
